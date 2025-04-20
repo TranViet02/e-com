@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giới thiệu - MobileShop</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        .cart-icon-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-icon-container i {
+            font-size: 24px;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e53935;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #cart-count.overflow {
+            width: auto;
+            min-width: 30px;
+            padding: 5px 10px;
+            font-size: 10px;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-container h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-container p,
+        .about-container ul {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .about-container ul {
+            padding-left: 20px;
+        }
+
+        .about-container li {
+            margin-bottom: 10px;
+        }
+
+        .about-image {
+            width: 100%;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>MobileShop</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." id="search-input" />
+            <button>Search</button>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i>Trang chủ</a>
+            <a href="products.html"><i class="fas fa-box"></i>Sản phẩm</a>
+            <a href="news.html"><i class="fas fa-newspaper"></i>Tin tức</a>
+            <a href="carerres.html" class="apply-now-button"><i class="fas fa-briefcase"></i> Gia nhập đội ngũ</a>
+            <a href="contact.html"><i class="fas fa-phone-alt"></i>Liên hệ</a>
+            <a href="about_us.html"><i class="fas fa-info-circle"></i>About</a>
+            <a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
+            <a href="cart.html" class="cart-icon-container">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" style="display: none;">0</span>
+                Giỏ Hàng
+            </a>
+        </div>
+        <div class="user-actions">
+            <button onclick="logout()"><i class="fas fa-sign-out-alt"></i>Đăng xuất</button>
+        </div>
+    </header>
+
+    <div class="about-container">
+        <h2>Giới thiệu về MobileShop</h2>
+        <p><strong>MobileShop</strong> là địa chỉ mua sắm điện thoại trực tuyến uy tín hàng đầu Việt Nam, cung cấp các
+            sản phẩm đến từ các thương hiệu nổi tiếng như Apple, Samsung, Xiaomi, Oppo, Huawei và nhiều hãng khác.</p>
+        <p>Chúng tôi cam kết:</p>
+        <ul>
+            <li>✅ Sản phẩm chính hãng 100%</li>
+            <li>🚚 Giao hàng nhanh chóng trên toàn quốc</li>
+            <li>💬 Hỗ trợ tư vấn 24/7</li>
+            <li>🔁 Đổi trả linh hoạt trong 7 ngày</li>
+        </ul>
+        <p>Với phương châm “Khách hàng là trọng tâm”, MobileShop không ngừng nỗ lực cải thiện dịch vụ và đa dạng hóa sản
+            phẩm nhằm mang đến trải nghiệm mua sắm tốt nhất cho người tiêu dùng.</p>
+
+        <img src="../assets/images/about.jpg" alt="Về chúng tôi" class="about-image">
+
+        <h2>Tầm nhìn & Sứ mệnh</h2>
+        <p><strong>Tầm nhìn:</strong> Trở thành nền tảng thương mại điện tử hàng đầu trong lĩnh vực điện thoại di động
+            tại Việt Nam.</p>
+        <p><strong>Sứ mệnh:</strong> Cung cấp các sản phẩm công nghệ chính hãng với dịch vụ xuất sắc, mang lại trải
+            nghiệm mua sắm dễ dàng và đáng tin cậy cho mọi khách hàng.</p>
+
+        <h2>Giá trị cốt lõi</h2>
+        <ul>
+            <li>🤝 <strong>Khách hàng là trung tâm:</strong> Mọi hoạt động đều hướng đến lợi ích và sự hài lòng của
+                khách hàng.</li>
+            <li>📦 <strong>Chất lượng sản phẩm:</strong> Cam kết bán hàng chính hãng, nói không với hàng giả, hàng nhái.
+            </li>
+            <li>🚀 <strong>Đổi mới sáng tạo:</strong> Không ngừng cập nhật công nghệ, quy trình vận hành và dịch vụ.
+            </li>
+            <li>🧡 <strong>Trách nhiệm xã hội:</strong> Đóng góp tích cực cho cộng đồng và môi trường sống.</li>
+        </ul>
+
+        <h2>Thành tựu nổi bật</h2>
+        <ul>
+            <li>🏆 Hơn <strong>500.000+</strong> đơn hàng thành công mỗi năm</li>
+            <li>🌟 Được đánh giá <strong>4.9/5</strong> từ khách hàng trên toàn quốc</li>
+            <li>📍 Có mặt tại <strong>30+ tỉnh thành</strong> với hệ thống đối tác giao hàng</li>
+            <li>👩‍💻 Đội ngũ <strong>100+</strong> nhân viên luôn sẵn sàng hỗ trợ 24/7</li>
+        </ul>
+
+        <h2>Lời cảm ơn</h2>
+        <p>Chúng tôi xin chân thành cảm ơn Quý khách hàng đã tin tưởng và đồng hành cùng MobileShop trong suốt thời gian
+            qua. Sự ủng hộ của bạn chính là động lực để chúng tôi không ngừng phát triển và hoàn thiện mỗi ngày.</p>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-about">
+                    <h2>Giới thiệu về MobileShop</h2>
+                    <p>MobileShop chuyên cung cấp các sản phẩm điện thoại chính hãng với giá cả hợp lý. Chúng tôi cam
+                        kết mang đến cho khách hàng trải nghiệm mua sắm trực tuyến tuyệt vời, với dịch vụ chăm sóc khách
+                        hàng tận tình và giao hàng nhanh chóng.</p>
+                </div>
+                <div class="footer-contact">
+                    <h2>Liên hệ</h2>
+                    <ul>
+                        <li><strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM</li>
+                        <li><strong>Email:</strong> support@mobileshop.com</li>
+                        <li><strong>Điện thoại:</strong> 0901 234 567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-logos">
+                <h2>Hãng điện thoại</h2>
+                <div class="logos-container">
+                    <img src="../assets/images/logo-iphone.png" alt="iPhone" />
+                    <img src="../assets/images/logo-samsung.png" alt="Samsung" />
+                    <img src="../assets/images/logo-xiaomi.png" alt="Xiaomi" />
+                    <img src="../assets/images/logo-oppo.png" alt="Oppo" />
+                    <img src="../assets/images/logo-huw.png" alt="Huawei" />
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function logout() {
+            localStorage.removeItem("userToken");
+            window.location.href = "login.html";
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCountElement = document.getElementById("cart-count");
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            cartCountElement.textContent = totalItems > 99 ? "99+" : totalItems;
+            cartCountElement.style.display = totalItems > 0 ? 'inline-block' : 'none';
+            if (totalItems > 99) {
+                cartCountElement.classList.add("overflow");
+            } else {
+                cartCountElement.classList.remove("overflow");
+            }
+        }
+
+        window.onload = function () {
+            updateCartCount();
+        };
+    </script>
+</body>
+
+</html>

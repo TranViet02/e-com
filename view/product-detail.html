@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi Tiết Sản Phẩm</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS hiện tại giữ nguyên */
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .product-detail {
+            display: flex;
+            gap: 30px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-detail img {
+            width: 400px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            padding: 10px;
+        }
+
+        .product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-info h2 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        #product-price {
+            color: #e53935;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .product-info p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        #add-to-cart {
+            padding: 12px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #add-to-cart i {
+            font-size: 18px;
+        }
+
+        #add-to-cart:hover {
+            background-color: #218838;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        /* CSS cho input số lượng */
+        .quantity-container {
+            margin-top: 20px;
+        }
+
+        .quantity-container input {
+            width: 80px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        /* CSS cho biểu tượng giỏ hàng và số lượng */
+        .cart-icon-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-icon-container i {
+            font-size: 24px;
+        }
+
+        /* Định dạng cho số lượng sản phẩm trong giỏ hàng */
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e53935;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #cart-count.overflow {
+            width: auto;
+            min-width: 30px;
+            padding: 5px 10px;
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>MobileShop</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." id="search-input" />
+            <button>Search</button>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i>Trang chủ</a>
+            <a href="products.html"><i class="fas fa-box"></i>Sản phẩm</a>
+            <a href="news.html"><i class="fas fa-newspaper"></i>Tin tức</a>
+            <a href="carerres.html" class="apply-now-button"><i class="fas fa-briefcase"></i> Gia nhập đội ngũ</a>
+            <a href="contact.html"><i class="fas fa-phone-alt"></i>Liên hệ</a>
+            <a href="about_us.html"><i class="fas fa-info-circle"></i>About</a>
+            <a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
+            <a href="cart.html" class="cart-icon-container">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" style="display: none;">0</span>
+                Giỏ Hàng
+            </a>
+        </div>
+        <div class="user-actions">
+            <button onclick="logout()"><i class="fas fa-sign-out-alt"></i>Đăng xuất</button>
+        </div>
+    </header>
+
+    <div class="product-detail-container">
+        <div class="product-detail">
+            <img id="product-image" src="" alt="Product Image" />
+            <div class="product-info">
+                <h2 id="product-name"></h2>
+                <p id="product-price"></p>
+                <p id="product-description"></p>
+                <div class="quantity-container">
+                    <input type="number" id="product-quantity" value="1" min="1" />
+                    <button id="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-about">
+                    <h2>Giới thiệu về MobileShop</h2>
+                    <p>MobileShop chuyên cung cấp các sản phẩm điện thoại chính hãng với giá cả hợp lý. Chúng tôi cam
+                        kết mang đến cho khách hàng trải nghiệm mua sắm trực tuyến tuyệt vời, với dịch vụ chăm sóc khách
+                        hàng tận tình và giao hàng nhanh chóng.</p>
+                </div>
+                <div class="footer-contact">
+                    <h2>Liên hệ</h2>
+                    <ul>
+                        <li><strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM</li>
+                        <li><strong>Email:</strong> support@mobileshop.com</li>
+                        <li><strong>Điện thoại:</strong> 0901 234 567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-logos">
+                <h2>Hãng điện thoại</h2>
+                <div class="logos-container">
+                    <img src="../assets/images/logo-iphone.png" alt="iPhone" />
+                    <img src="../assets/images/logo-samsung.png" alt="Samsung" />
+                    <img src="../assets/images/logo-xiaomi.png" alt="Xiaomi" />
+                    <img src="../assets/images/logo-oppo.png" alt="Oppo" />
+                    <img src="../assets/images/logo-huw.png" alt="Huawei" />
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MobileShop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lấy giỏ hàng từ localStorage
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        // Lưu giỏ hàng vào localStorage
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Thêm sản phẩm vào giỏ hàng
+        function addToCart(product, quantity) {
+            const cart = getCart();
+            const productIndex = cart.findIndex(item => item.id === product.id);
+
+            if (productIndex > -1) {
+                cart[productIndex].quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+
+            saveCart(cart);
+            updateCartCount();  // Cập nhật số lượng giỏ hàng
+        }
+
+        // Cập nhật số lượng giỏ hàng
+        function updateCartCount() {
+            const cart = getCart();
+            const cartCountElement = document.getElementById("cart-count");
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+            cartCountElement.textContent = totalItems > 99 ? "99+" : totalItems;
+            cartCountElement.style.display = totalItems > 0 ? 'inline-block' : 'none';
+            if (totalItems > 99) {
+                cartCountElement.classList.add("overflow");
+            } else {
+                cartCountElement.classList.remove("overflow");
+            }
+        }
+
+        // Lấy dữ liệu sản phẩm từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productData = JSON.parse(decodeURIComponent(urlParams.get("product")));
+
+        document.getElementById("product-name").textContent = productData.name;
+        document.getElementById("product-price").textContent = productData.price;
+        document.getElementById("product-description").textContent = productData.description;
+        document.getElementById("product-image").src = productData.image;
+
+        // Khi người dùng nhấn nút "Thêm vào giỏ hàng"
+        document.getElementById("add-to-cart").addEventListener("click", () => {
+            const quantity = parseInt(document.getElementById("product-quantity").value) || 1;
+            const product = {
+                id: new Date().getTime(),
+                name: document.getElementById("product-name").textContent,
+                price: document.getElementById("product-price").textContent,
+                description: document.getElementById("product-description").textContent,
+                image: document.getElementById("product-image").src,
+            };
+            addToCart(product, quantity);
+            alert(`${quantity} sản phẩm đã được thêm vào giỏ hàng!`);
+        });
+
+        // Cập nhật số lượng giỏ hàng khi trang chi tiết sản phẩm được load
+        window.onload = updateCartCount;
+    </script>
+</body>
+
+</html>

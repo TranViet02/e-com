@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuyển dụng - MobileShop</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        .cart-icon-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-icon-container i {
+            font-size: 24px;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e53935;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #cart-count.overflow {
+            width: auto;
+            min-width: 30px;
+            padding: 5px 10px;
+            font-size: 10px;
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .category-section,
+        .promo-section {
+            margin-top: 30px;
+        }
+
+        .category-items,
+        .promo-items {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .category-item,
+        .promo-item {
+            width: 30%;
+            text-align: center;
+        }
+
+        .category-item img,
+        .promo-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .careers-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .careers-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .careers-container p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .job-listings ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job-listings li {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            transition: 0.3s;
+        }
+
+        .job-listings li:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .application {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>MobileShop</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." id="search-input" />
+            <button>Search</button>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i>Trang chủ</a>
+            <a href="products.html"><i class="fas fa-box"></i>Sản phẩm</a>
+            <a href="news.html"><i class="fas fa-newspaper"></i>Tin tức</a>
+            <a href="carerres.html" class="apply-now-button"><i class="fas fa-briefcase"></i> Gia nhập đội ngũ</a>
+            <a href="contact.html"><i class="fas fa-phone-alt"></i>Liên hệ</a>
+            <a href="about_us.html"><i class="fas fa-info-circle"></i>About</a>
+            <a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
+            <a href="cart.html" class="cart-icon-container">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" style="display: none;">0</span>
+                Giỏ Hàng
+            </a>
+        </div>
+        <div class="user-actions">
+            <button onclick="logout()"><i class="fas fa-sign-out-alt"></i>Đăng xuất</button>
+        </div>
+    </header>
+
+    <main class="careers-container">
+        <a class="back-button" href="index.html"><i class="fas fa-arrow-left"></i> Về trang chủ</a>
+
+        <section class="careers-intro">
+            <h2>Gia nhập đội ngũ MobileShop</h2>
+            <p>Chúng tôi luôn tìm kiếm những cá nhân năng động, đam mê công nghệ và mong muốn phát triển sự nghiệp trong
+                môi trường bán lẻ hiện đại.</p>
+        </section>
+
+        <section class="job-listings">
+            <h3>Vị trí đang tuyển</h3>
+            <ul>
+                <li>
+                    <h4>Nhân viên bán hàng</h4>
+                    <p><strong>Địa điểm:</strong> TP.HCM</p>
+                    <p><strong>Mô tả:</strong> Tư vấn khách hàng, giới thiệu sản phẩm, hỗ trợ bán hàng tại cửa hàng.</p>
+                </li>
+                <li>
+                    <h4>Chuyên viên marketing</h4>
+                    <p><strong>Địa điểm:</strong> Hà Nội</p>
+                    <p><strong>Mô tả:</strong> Lên kế hoạch và thực hiện chiến dịch quảng bá sản phẩm trên nền tảng số.
+                    </p>
+                </li>
+                <li>
+                    <h4>Nhân viên kho</h4>
+                    <p><strong>Địa điểm:</strong> TP.HCM</p>
+                    <p><strong>Mô tả:</strong> Quản lý hàng tồn kho, sắp xếp hàng hóa, hỗ trợ vận chuyển.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="application">
+            <h3>Cách ứng tuyển</h3>
+            <p>Gửi CV và thông tin ứng tuyển về email <strong>tuyendung@mobileshop.com</strong> hoặc liên hệ trực tiếp
+                qua số <strong>0901 234 567</strong>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-about">
+                    <h2>Giới thiệu về MobileShop</h2>
+                    <p>MobileShop chuyên cung cấp các sản phẩm điện thoại chính hãng với giá cả hợp lý. Chúng tôi cam
+                        kết mang đến cho khách hàng trải nghiệm mua sắm trực tuyến tuyệt vời, với dịch vụ chăm sóc khách
+                        hàng tận tình và giao hàng nhanh chóng.</p>
+                </div>
+                <div class="footer-contact">
+                    <h2>Liên hệ</h2>
+                    <ul>
+                        <li><strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM</li>
+                        <li><strong>Email:</strong> support@mobileshop.com</li>
+                        <li><strong>Điện thoại:</strong> 0901 234 567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-logos">
+                <h2>Hãng điện thoại</h2>
+                <div class="logos-container">
+                    <img src="../assets/images/logo-iphone.png" alt="iPhone" />
+                    <img src="../assets/images/logo-samsung.png" alt="Samsung" />
+                    <img src="../assets/images/logo-xiaomi.png" alt="Xiaomi" />
+                    <img src="../assets/images/logo-oppo.png" alt="Oppo" />
+                    <img src="../assets/images/logo-huw.png" alt="Huawei" />
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function logout() {
+            localStorage.removeItem("userToken");
+            window.location.href = "login.html";
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCountElement = document.getElementById("cart-count");
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            cartCountElement.textContent = totalItems > 99 ? "99+" : totalItems;
+            cartCountElement.style.display = totalItems > 0 ? 'inline-block' : 'none';
+            if (totalItems > 99) {
+                cartCountElement.classList.add("overflow");
+            } else {
+                cartCountElement.classList.remove("overflow");
+            }
+        }
+
+        window.onload = function () {
+            updateCartCount();
+        };
+    </script>
+</body>
+
+</html>
