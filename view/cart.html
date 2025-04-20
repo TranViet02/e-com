@@ -165,7 +165,6 @@
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">
             <h1>MobileShop</h1>
@@ -192,8 +191,6 @@
             <button onclick="logout()"><i class="fas fa-sign-out-alt"></i>Đăng xuất</button>
         </div>
     </header>
-
-    <!-- Giỏ Hàng -->
     <div class="cart-container">
         <h2>Giỏ Hàng</h2>
         <div id="cart-items-container"></div>
@@ -203,17 +200,14 @@
     </div>
 
     <script>
-        // Lấy giỏ hàng từ localStorage
         function getCart() {
             return JSON.parse(localStorage.getItem('cart')) || [];
         }
 
-        // Lưu giỏ hàng vào localStorage
         function saveCart(cart) {
             localStorage.setItem('cart', JSON.stringify(cart));
         }
 
-        // Hiển thị giỏ hàng
         function renderCart() {
             const cart = getCart();
             const cartContainer = document.getElementById("cart-items-container");
@@ -248,10 +242,8 @@
             });
 
             updateTotalPrice();
-            updateCartCount();  // Cập nhật số lượng giỏ hàng trên header
+            updateCartCount();
         }
-
-        // Xóa sản phẩm khỏi giỏ hàng
         function removeFromCart(productId) {
             let cart = getCart();
             cart = cart.filter(item => item.id !== productId);
@@ -259,63 +251,48 @@
             renderCart();
         }
 
-        // Cập nhật tổng giá trị giỏ hàng
         function updateTotalPrice() {
             const cart = getCart();
             let totalPrice = 0;
-
-            // Duyệt qua giỏ hàng và cộng dồn giá trị của từng sản phẩm
             cart.forEach(item => {
-                // Lấy giá trị của sản phẩm và chuyển sang số (loại bỏ ký tự không phải số và các dấu phân cách)
                 const price = parseFloat(item.price.replace(/[^\d]/g, '')) || 0;
-                totalPrice += price * item.quantity;  // Cộng dồn giá trị
+                totalPrice += price * item.quantity;
             });
 
-            // Kiểm tra nếu giỏ hàng không trống, mới hiển thị tổng giá trị
             if (cart.length > 0) {
-                // Hiển thị tổng tiền với định dạng số và đơn vị "VND"
                 document.getElementById("total-price").innerHTML = `<strong>Tổng cộng: ${totalPrice.toLocaleString()} VND</strong>`;
             } else {
-                document.getElementById("total-price").innerHTML = ''; // Nếu giỏ hàng trống, ẩn phần tổng giá trị
+                document.getElementById("total-price").innerHTML = '';
             }
         }
-
-        // Cập nhật số lượng giỏ hàng
         function updateCartCount() {
             const cart = getCart();
             const cartCountElement = document.getElementById("cart-count");
             const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
             cartCountElement.textContent = totalItems > 99 ? "99+" : totalItems;
-            cartCountElement.style.display = totalItems > 0 ? 'inline-block' : 'none';  // Ẩn khi không có sản phẩm
+            cartCountElement.style.display = totalItems > 0 ? 'inline-block' : 'none';
             if (totalItems > 99) {
                 cartCountElement.classList.add("overflow");
             } else {
                 cartCountElement.classList.remove("overflow");
             }
         }
-
-        // Chức năng thanh toán
-        // Chức năng thanh toán
         function checkout() {
             const cart = getCart();
             if (cart.length === 0) {
                 alert("Giỏ hàng của bạn đang trống. Vui lòng thêm sản phẩm trước khi thanh toán.");
                 return;
             }
-
-            // Thanh toán thành công
-            localStorage.removeItem('cart');  // Xóa giỏ hàng sau khi thanh toán
-            renderCart();  // Cập nhật lại giao diện giỏ hàng
-            document.getElementById("confirmation-message").style.display = "block";  // Hiển thị thông báo thanh toán thành công
-            document.querySelector('.checkout-btn').style.display = 'none';  // Ẩn nút thanh toán
+            localStorage.removeItem('cart');
+            renderCart();
+            document.getElementById("confirmation-message").style.display = "block";
+            document.querySelector('.checkout-btn').style.display = 'none';
 
             setTimeout(function () {
-                document.getElementById("confirmation-message").style.display = "none";  // Ẩn thông báo sau 3 giây
+                document.getElementById("confirmation-message").style.display = "none";
             }, 3000);
         }
 
-
-        // Khi trang giỏ hàng được load
         window.onload = renderCart;
     </script>
 
